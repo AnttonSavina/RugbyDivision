@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost
--- Généré le : mar. 07 oct. 2025 à 15:15
--- Version du serveur : 10.3.39-MariaDB-0+deb10u1
--- Version de PHP : 7.3.31-1~deb10u5
+-- Hôte : 127.0.0.1:3366
+-- Généré le : mar. 12 mai 2026 à 13:38
+-- Version du serveur : 10.4.32-MariaDB
+-- Version de PHP : 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,16 +18,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `RugbyDIVISION`
+-- Base de données : `rugbydivision1`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Arbitre`
+-- Structure de la table `arbitre`
 --
 
-CREATE TABLE `Arbitre` (
+CREATE TABLE `arbitre` (
   `idArbitre` int(11) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
@@ -37,10 +37,10 @@ CREATE TABLE `Arbitre` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `Arbitre`
+-- Déchargement des données de la table `arbitre`
 --
 
-INSERT INTO `Arbitre` (`idArbitre`, `nom`, `prenom`, `dateNaissance`, `nationalite`, `categorie`) VALUES
+INSERT INTO `arbitre` (`idArbitre`, `nom`, `prenom`, `dateNaissance`, `nationalite`, `categorie`) VALUES
 (1, 'Attisson', 'Luc', NULL, 'Française', 'Top 14'),
 (2, 'Berthezène', 'Pierre', NULL, 'Française', 'Top 14'),
 (3, 'Bru', 'Pierre', NULL, 'Française', 'Top 14'),
@@ -62,10 +62,10 @@ INSERT INTO `Arbitre` (`idArbitre`, `nom`, `prenom`, `dateNaissance`, `nationali
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Club`
+-- Structure de la table `club`
 --
 
-CREATE TABLE `Club` (
+CREATE TABLE `club` (
   `idClub` int(11) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `ville` varchar(50) NOT NULL,
@@ -74,10 +74,10 @@ CREATE TABLE `Club` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `Club`
+-- Déchargement des données de la table `club`
 --
 
-INSERT INTO `Club` (`idClub`, `nom`, `ville`, `anneeCreation`, `idStade`) VALUES
+INSERT INTO `club` (`idClub`, `nom`, `ville`, `anneeCreation`, `idStade`) VALUES
 (1, 'Aviron Bayonnais', 'Bayonne', 1904, 1),
 (2, 'Union Bordeaux-Bègles', 'Bordeaux', 2006, 2),
 (3, 'Castres Olympique', 'Castres', 1898, 3),
@@ -96,10 +96,10 @@ INSERT INTO `Club` (`idClub`, `nom`, `ville`, `anneeCreation`, `idStade`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `FaitObjetDeTransfert`
+-- Structure de la table `faitobjetdetransfert`
 --
 
-CREATE TABLE `FaitObjetDeTransfert` (
+CREATE TABLE `faitobjetdetransfert` (
   `idTransfert` int(11) NOT NULL,
   `idJoueur` int(11) DEFAULT NULL,
   `idClub` int(11) DEFAULT NULL,
@@ -107,20 +107,20 @@ CREATE TABLE `FaitObjetDeTransfert` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `FaitObjetDeTransfert`
+-- Déchargement des données de la table `faitobjetdetransfert`
 --
 
-INSERT INTO `FaitObjetDeTransfert` (`idTransfert`, `idJoueur`, `idClub`, `dateTransfert`) VALUES
+INSERT INTO `faitobjetdetransfert` (`idTransfert`, `idJoueur`, `idClub`, `dateTransfert`) VALUES
 (1, 34, 1, '2023-2024'),
 (2, 8, 1, '2024-2025');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Joueur`
+-- Structure de la table `joueur`
 --
 
-CREATE TABLE `Joueur` (
+CREATE TABLE `joueur` (
   `idJoueur` int(11) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
@@ -131,10 +131,10 @@ CREATE TABLE `Joueur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `Joueur`
+-- Déchargement des données de la table `joueur`
 --
 
-INSERT INTO `Joueur` (`idJoueur`, `nom`, `prenom`, `dateNaissance`, `poste`, `nationalite`, `idClub`) VALUES
+INSERT INTO `joueur` (`idJoueur`, `nom`, `prenom`, `dateNaissance`, `poste`, `nationalite`, `idClub`) VALUES
 (1, 'Anscombe', 'Gareth', '1991-05-10', 'Demi d\'ouverture', 'Pays de Galles', 1),
 (2, 'Bordelai', 'Andy', '2000-03-29', 'Pilier gauche', 'France', 1),
 (3, 'Bosch', 'Facundo', '1991-08-08', 'Talonneur', 'Argentine', 1),
@@ -218,10 +218,10 @@ INSERT INTO `Joueur` (`idJoueur`, `nom`, `prenom`, `dateNaissance`, `poste`, `na
 -- --------------------------------------------------------
 
 --
--- Structure de la table `MatchRugby`
+-- Structure de la table `matchrugby`
 --
 
-CREATE TABLE `MatchRugby` (
+CREATE TABLE `matchrugby` (
   `idMatch` int(11) NOT NULL,
   `dateMatch` date NOT NULL,
   `heure` time DEFAULT NULL,
@@ -234,10 +234,10 @@ CREATE TABLE `MatchRugby` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `MatchRugby`
+-- Déchargement des données de la table `matchrugby`
 --
 
-INSERT INTO `MatchRugby` (`idMatch`, `dateMatch`, `heure`, `scoreDomicile`, `scoreExterieur`, `annee`, `division`, `idStade`, `idArbitre`) VALUES
+INSERT INTO `matchrugby` (`idMatch`, `dateMatch`, `heure`, `scoreDomicile`, `scoreExterieur`, `annee`, `division`, `idStade`, `idArbitre`) VALUES
 (1, '2025-09-06', '19:00:00', 47, 24, '2025-2026', 'Top14', 11, NULL),
 (2, '2025-09-06', '19:00:00', 19, 26, '2025-2026', 'Top14', 9, NULL),
 (3, '2025-09-06', '19:00:00', 15, 17, '2025-2026', 'Top14', 3, NULL),
@@ -256,20 +256,20 @@ INSERT INTO `MatchRugby` (`idMatch`, `dateMatch`, `heure`, `scoreDomicile`, `sco
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Oppose`
+-- Structure de la table `oppose`
 --
 
-CREATE TABLE `Oppose` (
+CREATE TABLE `oppose` (
   `idMatch` int(11) NOT NULL,
   `idClub` int(11) NOT NULL,
   `role` enum('domicile','exterieur') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `Oppose`
+-- Déchargement des données de la table `oppose`
 --
 
-INSERT INTO `Oppose` (`idMatch`, `idClub`, `role`) VALUES
+INSERT INTO `oppose` (`idMatch`, `idClub`, `role`) VALUES
 (1, 11, 'domicile'),
 (1, 14, 'exterieur'),
 (2, 1, 'exterieur'),
@@ -302,10 +302,10 @@ INSERT INTO `Oppose` (`idMatch`, `idClub`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Produit_Stat`
+-- Structure de la table `produit_stat`
 --
 
-CREATE TABLE `Produit_Stat` (
+CREATE TABLE `produit_stat` (
   `idJoueur` int(11) NOT NULL,
   `idMatch` int(11) NOT NULL,
   `points` int(11) DEFAULT NULL,
@@ -318,10 +318,10 @@ CREATE TABLE `Produit_Stat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `Produit_Stat`
+-- Déchargement des données de la table `produit_stat`
 --
 
-INSERT INTO `Produit_Stat` (`idJoueur`, `idMatch`, `points`, `essais`, `penalites`, `transformations`, `drops`, `cartonsJaunes`, `cartonsRouges`) VALUES
+INSERT INTO `produit_stat` (`idJoueur`, `idMatch`, `points`, `essais`, `penalites`, `transformations`, `drops`, `cartonsJaunes`, `cartonsRouges`) VALUES
 (1, 2, 0, 0, 0, 0, 0, 0, 0),
 (1, 9, 0, 0, 0, 0, 0, 0, 0),
 (2, 2, 0, 0, 0, 0, 0, 0, 0),
@@ -406,19 +406,19 @@ INSERT INTO `Produit_Stat` (`idJoueur`, `idMatch`, `points`, `essais`, `penalite
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Saison`
+-- Structure de la table `saison`
 --
 
-CREATE TABLE `Saison` (
+CREATE TABLE `saison` (
   `annee` varchar(50) NOT NULL,
   `division` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `Saison`
+-- Déchargement des données de la table `saison`
 --
 
-INSERT INTO `Saison` (`annee`, `division`) VALUES
+INSERT INTO `saison` (`annee`, `division`) VALUES
 ('2025-2026', 'Nationale'),
 ('2025-2026', 'Nationale 2'),
 ('2025-2026', 'ProD2'),
@@ -427,10 +427,10 @@ INSERT INTO `Saison` (`annee`, `division`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Stade`
+-- Structure de la table `stade`
 --
 
-CREATE TABLE `Stade` (
+CREATE TABLE `stade` (
   `idStade` int(11) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `ville` varchar(50) NOT NULL,
@@ -438,10 +438,10 @@ CREATE TABLE `Stade` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `Stade`
+-- Déchargement des données de la table `stade`
 --
 
-INSERT INTO `Stade` (`idStade`, `nom`, `ville`, `capacite`) VALUES
+INSERT INTO `stade` (`idStade`, `nom`, `ville`, `capacite`) VALUES
 (1, 'Stade Jean Dauger', 'Bayonne', 14370),
 (2, 'Stade Chaban-Delmas', 'Bordeaux', 34635),
 (3, 'Stade Pierre-Fabre', 'Castres', 11778),
@@ -460,10 +460,10 @@ INSERT INTO `Stade` (`idStade`, `nom`, `ville`, `capacite`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Staff`
+-- Structure de la table `staff`
 --
 
-CREATE TABLE `Staff` (
+CREATE TABLE `staff` (
   `idStaff` int(11) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
@@ -474,10 +474,10 @@ CREATE TABLE `Staff` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `Staff`
+-- Déchargement des données de la table `staff`
 --
 
-INSERT INTO `Staff` (`idStaff`, `nom`, `prenom`, `dateNaissanceStaff`, `specialite`, `nationalite`, `idClub`) VALUES
+INSERT INTO `staff` (`idStaff`, `nom`, `prenom`, `dateNaissanceStaff`, `specialite`, `nationalite`, `idClub`) VALUES
 (1, 'PATAT', 'Grégory', NULL, 'Manager Général', 'Française', 1),
 (2, 'FRASER', 'Gerard', NULL, 'Entraîneur des arrières', 'Écossaise', 1),
 (3, 'REY', 'Joël', NULL, 'Entraîneur des avants', 'Française', 1),
@@ -503,10 +503,10 @@ INSERT INTO `Staff` (`idStaff`, `nom`, `prenom`, `dateNaissanceStaff`, `speciali
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Utilisateur`
+-- Structure de la table `utilisateur`
 --
 
-CREATE TABLE `Utilisateur` (
+CREATE TABLE `utilisateur` (
   `idUtilisateur` int(11) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
@@ -517,83 +517,94 @@ CREATE TABLE `Utilisateur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`idUtilisateur`, `nom`, `prenom`, `mail`, `motDePasse`, `dateInscription`, `droits`) VALUES
+(1, 'Admin', 'ParDefaut', 'ttotto64500@gmail.com', '$2y$10$8ydj1SSrOXxLl5nv9vLqGudTnjmwcBmaG2iGQzjWj6O', '2026-05-12', 2),
+(2, 'ADMIN', 'ADMIN', 'Admin@gmail.com', '$2y$10$h0YvBYe2Tbf.xmDrXHUtJuRPxM9mJ/brlDUDVGGjakO', '2026-05-12', 1),
+(3, 'Arbitre', 'Arbitre', 'arbitre@gmail.com', '$2y$10$xpElwLPWdrbdVyO8L9mXDuy63W.nUPUsliuh/UYyS70', '2026-05-12', 3),
+(4, 'staff', 'staff', 'staff@gmail.com', '$2y$10$Adtj59TWv3fR8821dGEjpegKMi0k6vCyc/fOi7N8h1y', '2026-05-12', 1),
+(5, 'user', 'user', 'user@gmail.com', '$2y$10$O6wmruCdN5OcfF8Ln8xEhuIGEHlLCmGY6wbPBX6WfXe', '2026-05-12', 0);
+
+--
 -- Index pour les tables déchargées
 --
 
 --
--- Index pour la table `Arbitre`
+-- Index pour la table `arbitre`
 --
-ALTER TABLE `Arbitre`
+ALTER TABLE `arbitre`
   ADD PRIMARY KEY (`idArbitre`);
 
 --
--- Index pour la table `Club`
+-- Index pour la table `club`
 --
-ALTER TABLE `Club`
+ALTER TABLE `club`
   ADD PRIMARY KEY (`idClub`),
   ADD KEY `fk_club_stade` (`idStade`);
 
 --
--- Index pour la table `FaitObjetDeTransfert`
+-- Index pour la table `faitobjetdetransfert`
 --
-ALTER TABLE `FaitObjetDeTransfert`
+ALTER TABLE `faitobjetdetransfert`
   ADD PRIMARY KEY (`idTransfert`),
   ADD KEY `idJoueur` (`idJoueur`),
   ADD KEY `idClub` (`idClub`);
 
 --
--- Index pour la table `Joueur`
+-- Index pour la table `joueur`
 --
-ALTER TABLE `Joueur`
+ALTER TABLE `joueur`
   ADD PRIMARY KEY (`idJoueur`),
   ADD KEY `idClub` (`idClub`);
 
 --
--- Index pour la table `MatchRugby`
+-- Index pour la table `matchrugby`
 --
-ALTER TABLE `MatchRugby`
+ALTER TABLE `matchrugby`
   ADD PRIMARY KEY (`idMatch`),
   ADD KEY `fk_match_saison` (`annee`,`division`),
   ADD KEY `idStade` (`idStade`),
   ADD KEY `idArbitre` (`idArbitre`);
 
 --
--- Index pour la table `Oppose`
+-- Index pour la table `oppose`
 --
-ALTER TABLE `Oppose`
+ALTER TABLE `oppose`
   ADD PRIMARY KEY (`idMatch`,`idClub`),
   ADD KEY `idClub` (`idClub`);
 
 --
--- Index pour la table `Produit_Stat`
+-- Index pour la table `produit_stat`
 --
-ALTER TABLE `Produit_Stat`
+ALTER TABLE `produit_stat`
   ADD PRIMARY KEY (`idJoueur`,`idMatch`),
   ADD KEY `idMatch` (`idMatch`);
 
 --
--- Index pour la table `Saison`
+-- Index pour la table `saison`
 --
-ALTER TABLE `Saison`
+ALTER TABLE `saison`
   ADD PRIMARY KEY (`annee`,`division`);
 
 --
--- Index pour la table `Stade`
+-- Index pour la table `stade`
 --
-ALTER TABLE `Stade`
+ALTER TABLE `stade`
   ADD PRIMARY KEY (`idStade`);
 
 --
--- Index pour la table `Staff`
+-- Index pour la table `staff`
 --
-ALTER TABLE `Staff`
+ALTER TABLE `staff`
   ADD PRIMARY KEY (`idStaff`),
   ADD KEY `idClub` (`idClub`);
 
 --
--- Index pour la table `Utilisateur`
+-- Index pour la table `utilisateur`
 --
-ALTER TABLE `Utilisateur`
+ALTER TABLE `utilisateur`
   ADD PRIMARY KEY (`idUtilisateur`),
   ADD UNIQUE KEY `mail` (`mail`);
 
@@ -602,103 +613,103 @@ ALTER TABLE `Utilisateur`
 --
 
 --
--- AUTO_INCREMENT pour la table `Arbitre`
+-- AUTO_INCREMENT pour la table `arbitre`
 --
-ALTER TABLE `Arbitre`
+ALTER TABLE `arbitre`
   MODIFY `idArbitre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT pour la table `Club`
+-- AUTO_INCREMENT pour la table `club`
 --
-ALTER TABLE `Club`
+ALTER TABLE `club`
   MODIFY `idClub` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT pour la table `FaitObjetDeTransfert`
+-- AUTO_INCREMENT pour la table `faitobjetdetransfert`
 --
-ALTER TABLE `FaitObjetDeTransfert`
+ALTER TABLE `faitobjetdetransfert`
   MODIFY `idTransfert` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT pour la table `Joueur`
+-- AUTO_INCREMENT pour la table `joueur`
 --
-ALTER TABLE `Joueur`
+ALTER TABLE `joueur`
   MODIFY `idJoueur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
--- AUTO_INCREMENT pour la table `MatchRugby`
+-- AUTO_INCREMENT pour la table `matchrugby`
 --
-ALTER TABLE `MatchRugby`
+ALTER TABLE `matchrugby`
   MODIFY `idMatch` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT pour la table `Stade`
+-- AUTO_INCREMENT pour la table `stade`
 --
-ALTER TABLE `Stade`
+ALTER TABLE `stade`
   MODIFY `idStade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT pour la table `Staff`
+-- AUTO_INCREMENT pour la table `staff`
 --
-ALTER TABLE `Staff`
+ALTER TABLE `staff`
   MODIFY `idStaff` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT pour la table `Utilisateur`
+-- AUTO_INCREMENT pour la table `utilisateur`
 --
-ALTER TABLE `Utilisateur`
-  MODIFY `idUtilisateur` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `utilisateur`
+  MODIFY `idUtilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Contraintes pour les tables déchargées
 --
 
 --
--- Contraintes pour la table `Club`
+-- Contraintes pour la table `club`
 --
-ALTER TABLE `Club`
-  ADD CONSTRAINT `Club_ibfk_1` FOREIGN KEY (`idStade`) REFERENCES `Stade` (`idStade`);
+ALTER TABLE `club`
+  ADD CONSTRAINT `Club_ibfk_1` FOREIGN KEY (`idStade`) REFERENCES `stade` (`idStade`);
 
 --
--- Contraintes pour la table `FaitObjetDeTransfert`
+-- Contraintes pour la table `faitobjetdetransfert`
 --
-ALTER TABLE `FaitObjetDeTransfert`
-  ADD CONSTRAINT `FaitObjetDeTransfert_ibfk_1` FOREIGN KEY (`idJoueur`) REFERENCES `Joueur` (`idJoueur`),
-  ADD CONSTRAINT `FaitObjetDeTransfert_ibfk_2` FOREIGN KEY (`idClub`) REFERENCES `Club` (`idClub`);
+ALTER TABLE `faitobjetdetransfert`
+  ADD CONSTRAINT `FaitObjetDeTransfert_ibfk_1` FOREIGN KEY (`idJoueur`) REFERENCES `joueur` (`idJoueur`),
+  ADD CONSTRAINT `FaitObjetDeTransfert_ibfk_2` FOREIGN KEY (`idClub`) REFERENCES `club` (`idClub`);
 
 --
--- Contraintes pour la table `Joueur`
+-- Contraintes pour la table `joueur`
 --
-ALTER TABLE `Joueur`
-  ADD CONSTRAINT `Joueur_ibfk_1` FOREIGN KEY (`idClub`) REFERENCES `Club` (`idClub`);
+ALTER TABLE `joueur`
+  ADD CONSTRAINT `Joueur_ibfk_1` FOREIGN KEY (`idClub`) REFERENCES `club` (`idClub`);
 
 --
--- Contraintes pour la table `MatchRugby`
+-- Contraintes pour la table `matchrugby`
 --
-ALTER TABLE `MatchRugby`
-  ADD CONSTRAINT `MatchRugby_ibfk_1` FOREIGN KEY (`annee`,`division`) REFERENCES `Saison` (`annee`, `division`),
-  ADD CONSTRAINT `MatchRugby_ibfk_2` FOREIGN KEY (`idStade`) REFERENCES `Stade` (`idStade`),
-  ADD CONSTRAINT `MatchRugby_ibfk_3` FOREIGN KEY (`idArbitre`) REFERENCES `Arbitre` (`idArbitre`);
+ALTER TABLE `matchrugby`
+  ADD CONSTRAINT `MatchRugby_ibfk_1` FOREIGN KEY (`annee`,`division`) REFERENCES `saison` (`annee`, `division`),
+  ADD CONSTRAINT `MatchRugby_ibfk_2` FOREIGN KEY (`idStade`) REFERENCES `stade` (`idStade`),
+  ADD CONSTRAINT `MatchRugby_ibfk_3` FOREIGN KEY (`idArbitre`) REFERENCES `arbitre` (`idArbitre`);
 
 --
--- Contraintes pour la table `Oppose`
+-- Contraintes pour la table `oppose`
 --
-ALTER TABLE `Oppose`
-  ADD CONSTRAINT `Oppose_ibfk_1` FOREIGN KEY (`idMatch`) REFERENCES `MatchRugby` (`idMatch`),
-  ADD CONSTRAINT `Oppose_ibfk_2` FOREIGN KEY (`idClub`) REFERENCES `Club` (`idClub`);
+ALTER TABLE `oppose`
+  ADD CONSTRAINT `Oppose_ibfk_1` FOREIGN KEY (`idMatch`) REFERENCES `matchrugby` (`idMatch`),
+  ADD CONSTRAINT `Oppose_ibfk_2` FOREIGN KEY (`idClub`) REFERENCES `club` (`idClub`);
 
 --
--- Contraintes pour la table `Produit_Stat`
+-- Contraintes pour la table `produit_stat`
 --
-ALTER TABLE `Produit_Stat`
-  ADD CONSTRAINT `Produit_Stat_ibfk_1` FOREIGN KEY (`idJoueur`) REFERENCES `Joueur` (`idJoueur`),
-  ADD CONSTRAINT `Produit_Stat_ibfk_2` FOREIGN KEY (`idMatch`) REFERENCES `MatchRugby` (`idMatch`);
+ALTER TABLE `produit_stat`
+  ADD CONSTRAINT `Produit_Stat_ibfk_1` FOREIGN KEY (`idJoueur`) REFERENCES `joueur` (`idJoueur`),
+  ADD CONSTRAINT `Produit_Stat_ibfk_2` FOREIGN KEY (`idMatch`) REFERENCES `matchrugby` (`idMatch`);
 
 --
--- Contraintes pour la table `Staff`
+-- Contraintes pour la table `staff`
 --
-ALTER TABLE `Staff`
-  ADD CONSTRAINT `Staff_ibfk_1` FOREIGN KEY (`idClub`) REFERENCES `Club` (`idClub`);
+ALTER TABLE `staff`
+  ADD CONSTRAINT `Staff_ibfk_1` FOREIGN KEY (`idClub`) REFERENCES `club` (`idClub`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

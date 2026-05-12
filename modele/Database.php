@@ -3,8 +3,8 @@
 class Database
 {
     private static string $host = "localhost";
-    private static int $port = 3306;
-    private static string $dbName = "rugbydivision";
+    private static int $port = 3366;
+    private static string $dbName = "rugbydivision1";
     private static string $username = "root";
     private static string $password = "";
     private static ?PDO $conn = null;
